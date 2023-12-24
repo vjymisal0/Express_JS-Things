@@ -10,7 +10,7 @@ app.get('/contact', (req, res) => {
     res.send('<h1>Contact page</h1>');
 })
 app.get('/files', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'))
+    res.sendFile(PATH.join(__dirname, 'index.html'))
 
 })
 app.get('/jsonres', (req, res) => {
