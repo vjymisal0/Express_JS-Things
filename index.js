@@ -20,7 +20,7 @@ app.get('/jsonres', (req, res) => {
     // })
     res.send([{
         firstName: 'vijay',
-        lastName: 'kumar'
+        lastName: 'kumar '
     }
         , {
         firstName: 'samantha',
