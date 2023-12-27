@@ -3,6 +3,7 @@ const app = express()
 const PORT = 3000
 const path = require('path')
 const phone = require('./data')
+const products = require('./data')
 
 // app.use(express.static('example'))
 
@@ -37,8 +38,19 @@ app.get('/api/phone/:phoneID', (req, res) => {
 })
 */
 app.get('/api/v1/query', (req, res) => {
-    console.log(req.query)
-    res.send("Query Page")
+    let sortedPhone = [...phone]
+    const { search, limit } = req.query
+    if (search) {
+        sortedPhone = sortedPhone.filter((product) => {
+            return product.name.toLowerCase().startsWith(search)
+        })
+    }
+    // if (limit) {
+    //     sortedPhone = sortedPhone.slice(0, Number(limit))
+    // }
+    res.json(sortedPhone)
+    // console.log(req.query)
+    // res.send("Query Page")
 })
 
 
