@@ -1,5 +1,9 @@
 const express = require('express')
+const morgan = require('morgan')
 const app = express()
+const logger = require('morgan')
+
+/*
 const logger = (req, res, next) => {
     // const method = req.method
     // const url = req.url
@@ -9,17 +13,19 @@ const logger = (req, res, next) => {
     console.log(`${new Date()},Request[${req.method}],[${req.url}]`)
     next()
 }
-
-const authorize = (req, res, next) => {
-    console.log('i am the second middleware')
-    next()
-}
+*/
+// const authorize = (req, res, next) => {
+//     console.log('i am the second middleware')
+//     next()
+// }
 
 app.get('/', (req, res) => {
     res.send('Home')
 })
 
-app.use([authorize, logger])
+app.use(morgan('dev'))
+
+// app.use([authorize, logger])
 
 
 app.get('/about', (req, res) => {
